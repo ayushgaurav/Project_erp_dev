@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <title>Home</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+
+        <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+
+        <!-- FORM  -->
+        <div class="col-md-12">
+
+            <h1>Student Database</h1>
+            <form class="form-horizontal" id="form-edit-client">
+                <fieldset>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+<!--                        <label class="col-md-4 control-label" for="student-name">Keyword</label>-->
+                        <div class="col-md-4">
+                            <input id="student-name" name="student-name" type="text" placeholder="Search by student name or roll number" class="form-control input-md">
+                        </div>
+                        <div class="col-md-4">
+                            <button id="btn-save" name="btn-save" class="btn btn-success">Search</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <!-- LIST -->
+        <div class=col-md-12>
+
+            <form id="form-list-client">
+                <legend>List of registered students</legend>
+
+                <div class="pull-right">
+                    <a class="btn btn-default-btn-xs btn-primary" id="refresh"><i class="glyphicon glyphicon-refresh"></i> Refresh</a>
+                    <a class="btn btn-default-btn-xs btn-success" href="student_registration.html"><i class="glyphicon glyphicon-plus"></i> New</a>
+                </div>
+                <table class="table table-bordered table-condensed table-hover">
+                    <thead>
+                    <tr>
+                        <th>Roll Number</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+
+                    </thead>
+                    <tbody id="form-list-client-body">
+                    <tr>
+                        <td>M100906</td>
+                        <td>Riddhi Shree</td>
+                        <td>Active</td>
+                        <td>
+                            <a title="view this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-eye-open text-primary"></i> </a>
+                            <a title="edit this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-edit text-primary"></i> </a>
+                            <a title="delete this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-trash text-danger"></i> </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="alert alert-success alert-dismissible" hidden="true">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> Indicates a successful or positive action.
+    </div>
+
+</div>
+
+<script src="../js/home.js" charset="UTF-8"></script>
+</body>
+</html>

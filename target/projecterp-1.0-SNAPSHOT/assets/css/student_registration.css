@@ -1,0 +1,32 @@
+body {
+    background: url('https://www.wallpapertip.com/wmimgs/49-493241_background-image-for-student-portal.jpg') fixed;
+    background-size: cover;
+}
+
+*[role="form"] {
+    max-width: 60%;
+    padding: 15px;
+    /*margin: 0 auto;*/
+    border-radius: 0.3em;
+    background-color: #f2f2f2;
+}
+
+*[role="form"] h2 {
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 5%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    padding-bottom: 2rem;
+}
+
+.col-sm-3{
+max-width: 50%;
+}
+
+.container{
+    margin-top: 5%;
+}

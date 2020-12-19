@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="projecterp:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>projecterp</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="projecterp-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="projecterp:war exploded" />
+    </root>
+  </artifact>
+</component>
