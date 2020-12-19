@@ -7,6 +7,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class StudentsDAOImpl implements StudentsDAO {
@@ -17,14 +20,27 @@ public class StudentsDAOImpl implements StudentsDAO {
     @Override
     public void addStudent(Students student) {
         System.out.println(student.getEmail());
+        new_student = student;
+
         try(Session session = SessionUtil.getSession()){
             session.beginTransaction();
             //Generate roll number
-            Query<Students> query = session.createQuery("select max(s.student_id) from Students s",Students.class);
-            List<Students> latest_student_id = query.list();
-            System.out.println("Result: " + latest_student_id);
-//            student.setRoll_number("MT" + String.valueOf(Integer.parseInt(latest_student_id)+1));
-            System.out.println("Roll number --> " + student.getRoll_number());
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<Object> criteriaQuery = cb.createQuery(Object.class);
+            Root<Students> root = criteriaQuery.from(Students.class);
+            criteriaQuery.select(cb.max(root.get("student_id")));
+
+            Query query = session.createQuery(criteriaQuery);
+            Object max_id = query.getSingleResult();
+            String new_roll_number = "CSE_" + String.valueOf(Integer.parseInt(max_id.toString()) + 1);
+
+            System.out.println("New ID: " + new_roll_number);
+
+            //Generate roll number
+//            Query query = session.createQuery("select max(s.student_id) from Students s",Students.class);
+//            List list = query.list();
+//            System.out.println("Result: " + list.get(0));
+            new_student.setRoll_number(new_roll_number);
 
             //Add student
             Integer id = (Integer) session.save(student);
