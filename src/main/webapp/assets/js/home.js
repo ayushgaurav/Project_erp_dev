@@ -50,9 +50,34 @@ $("#refresh").on("click", async function (e){
 //
 //
 
-$("#tablebody").on("click", ".text-danger", function (e)
+$("#tablebody").on("click", ".glyphicon-trash", function (e)
 {
-   alert($(this).closest('tr').attr("id"));
+    // alert($(this).closest('tr').attr("id"));
+
+    var s = "/api/students/delete/"+$(this).closest('tr').attr("id");
+    $.get(s,function (e){
+        alert("deleted");
+    });
+
+
+});
+
+
+// view
+$("#tablebody").on("click", ".glyphicon-eye-open", function (data, status)
+{
+    var s = "/api/students/view/"+$(this).closest('tr').attr("id");
+    $.get(s,function (data, status){
+        alert("view");
+        alert(data);
+    });
+
+});
+
+// modify
+$("#tablebody").on("click", ".glyphicon-edit", function (e)
+{
+    alert($(this).closest('tr').attr("id"));
 });
 //
 // $(".glyphicon-edit").on("click", function (e)

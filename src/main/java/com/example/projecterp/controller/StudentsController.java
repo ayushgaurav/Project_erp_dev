@@ -27,11 +27,18 @@ public class StudentsController {
 
     @GET
     @Path("/view/{id}")
-    public Response viewStudent(@PathParam("id") String roll_number) {
+    public Response viewStudent(@PathParam("id") String roll_number) throws JsonProcessingException {
 //        System.out.println("Controller: " + roll_number);
         StudentsService studentsService = new StudentsService();
-        studentsService.viewStudent(roll_number);
-        return Response.ok().build();
+        Students students = studentsService.viewStudent(roll_number);
+
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonData = mapper.writeValueAsString(students);
+
+        return Response
+                .ok()
+                .entity(jsonData)
+                .build();
     }
 
     @GET
@@ -57,7 +64,7 @@ public class StudentsController {
         return Response.ok().build();
     }
 
-    @DELETE
+    @GET
     @Path("/delete/{id}")
     public Response deleteStudent(@PathParam("id") String roll_number) {
         StudentsService studentsService= new StudentsService();
